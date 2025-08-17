@@ -1,0 +1,81 @@
+# ---- Build outputs ----
+/build/
+**/build/
+bin/
+gen/
+out/
+
+# Android packages
+*.apk
+*.ap_
+*.aab
+
+# ART/Dalvik & Java
+*.dex
+*.class
+
+# Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# Local SDK/NDK config (keep this out of git)
+local.properties
+
+# NDK / CMake
+.externalNativeBuild/
+.cxx/
+obj/
+
+# Android Studio / IntelliJ
+.idea/
+/*.iml
+**/*.iml
+.navigation/
+captures/
+
+# Kotlin compiler caches
+.kotlinc/
+
+# Logs
+*.log
+
+# Lint reports
+lint/tmp/
+lint/intermediates/
+lint/reports/
+
+# Signing / keystore (NEVER commit real keys)
+*.jks
+*.keystore
+*.jks.lock
+*.keystore.lock
+keystore.properties
+signing.properties
+
+# Firebase / Crashlytics
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+# Uncomment if you don't want to commit the Google config file
+# google-services.json
+# Google Services (iOS if you share config in repo)
+# GoogleService-Info.plist
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# OS cruft
+.DS_Store
+Thumbs.db
+$RECYCLE.BIN/
+
+# VS Code (if teammates use it)
+.vscode/
+
+# Environment files (if you use them)
+.env
+.env.*
