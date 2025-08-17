@@ -1,8 +1,10 @@
 package com.onelogica.esathi
 
 import android.Manifest
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Build
@@ -54,6 +56,15 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "GPS is required for this app", Toast.LENGTH_SHORT).show()
             }
         }
+
+    // 🔄 BroadcastReceiver to monitor GPS changes instantly
+    private val gpsReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent?.action == LocationManager.PROVIDERS_CHANGED_ACTION) {
+                checkLocationEnabled()
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -144,9 +155,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // 🔄 Re-check location every time activity resumes
+    // 🔄 Register/Unregister GPS BroadcastReceiver
     override fun onResume() {
         super.onResume()
+        registerReceiver(gpsReceiver, IntentFilter(LocationManager.PROVIDERS_CHANGED_ACTION))
         checkLocationEnabled()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(gpsReceiver)
     }
 }
